@@ -7,13 +7,16 @@ set -e
 echo "Updating system packages..."
 sudo dnf update -y
 
+# Install Python
+echo "Installing Python..."
+sudo dnf install -y python3 python3-pip
+
 # Install Node.js
 echo "Installing Node.js..."
 sudo dnf install -y nodejs
 
 # Install the latest version of Django (using pip)
-echo "Installing Python and Django..."
-sudo dnf install -y python3 python3-pip
+echo "Installing Django..."
 pip3 install --upgrade pip
 pip3 install django
 
@@ -34,6 +37,8 @@ sudo systemctl enable docker
 
 # Verify installations
 echo "Verifying installations..."
+python3 --version
+echo "Python version: $(python3 --version)"
 node --version
 echo "Node.js version: $(node --version)"
 echo "Django version: $(python3 -m django --version)"
